@@ -42,7 +42,7 @@ function Dashboard() {
 
   return (
     <>
-      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
         <StatCard title="Total Applications" value={stats.total} />
         <StatCard title="Applied" value={stats.applied} />
         <StatCard title="Interviews" value={stats.interview} />
@@ -53,8 +53,8 @@ function Dashboard() {
         <StatCard title="Rejected" value={stats.rejected} />
       </div>
 
-      <div className="mt-10 rounded-xl border border-gray-200 bg-white p-6 shadow transition-colors duration-300 dark:border-slate-700 dark:bg-slate-800">
-        <h2 className="mb-5 text-2xl font-bold text-slate-900 dark:text-white">
+      <div className="mt-10 overflow-hidden rounded-xl border border-gray-200 bg-white p-4 sm:p-6 shadow transition-colors duration-300 dark:border-slate-700 dark:bg-slate-800">
+        <h2 className="mb-5 text-xl font-bold text-slate-900 sm:text-2xl dark:text-white">
           Recent Applications
         </h2>
 
@@ -67,7 +67,7 @@ function Dashboard() {
             {recentJobs.map((job) => (
               <div
                 key={job._id}
-                className="flex items-center justify-between rounded-lg border border-gray-200 p-4 transition-all duration-300 hover:bg-gray-50 dark:border-slate-700 dark:hover:bg-slate-700"
+                className="flex flex-col gap-4 rounded-lg border border-gray-200 p-4 transition-all duration-300 hover:bg-gray-50 md:flex-row md:items-center md:justify-between dark:border-slate-700 dark:hover:bg-slate-700"
               >
                 <div>
                   <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
@@ -84,7 +84,7 @@ function Dashboard() {
                 </div>
 
                 <span
-                  className={`rounded-full px-3 py-1 text-sm font-semibold ${
+                  className={`self-start rounded-full px-3 py-1 text-sm font-semibold md:self-auto ${
                     job.status === "Applied"
                       ? "bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300"
                       : job.status === "Interview"

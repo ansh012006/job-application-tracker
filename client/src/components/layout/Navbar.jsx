@@ -1,9 +1,9 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FaCog, FaSignOutAlt } from "react-icons/fa";
+import { FaCog, FaSignOutAlt, FaBars } from "react-icons/fa";
 import { useAuth } from "../../context/AuthContext";
 import { useTheme } from "../../context/ThemeContext";
 
-function Navbar() {
+function Navbar({ setSidebarOpen }) {
   const location = useLocation();
   const navigate = useNavigate();
   const { user, logout } = useAuth();
@@ -25,19 +25,31 @@ function Navbar() {
   };
 
   return (
-    <header className="flex items-center justify-between border-b border-gray-200 bg-white px-8 py-5 shadow-sm transition-colors duration-300 dark:border-slate-700 dark:bg-slate-900">
-      <div>
-        <h2 className="text-3xl font-bold text-slate-800 dark:text-white">
-          {title}
-        </h2>
+    <header className="flex flex-wrap items-center justify-between gap-4 border-b border-gray-200 bg-white px-4 py-4 shadow-sm transition-colors duration-300 sm:px-6 lg:px-8 dark:border-slate-700 dark:bg-slate-900">
+      {/* Left */}
+      <div className="flex items-center gap-3 min-w-0">
+        {/* Mobile Menu */}
+        <button
+          onClick={() => setSidebarOpen(true)}
+          className="rounded-lg border border-gray-300 p-2 lg:hidden dark:border-slate-600 dark:hover:bg-slate-800"
+        >
+          <FaBars />
+        </button>
 
-        <p className="text-gray-500 dark:text-gray-300">
-          Welcome back{user?.name ? `, ${user.name}` : ""} 👋
-        </p>
+        <div className="min-w-0">
+          <h2 className="truncate text-xl font-bold text-slate-800 sm:text-2xl lg:text-3xl dark:text-white">
+            {title}
+          </h2>
+
+          <p className="truncate text-sm text-gray-500 dark:text-gray-300">
+            Welcome back{user?.name ? `, ${user.name}` : ""} 👋
+          </p>
+        </div>
       </div>
 
-      <div className="flex items-center gap-4">
-        {/* Dark Mode Toggle */}
+      {/* Right */}
+      <div className="flex flex-wrap items-center justify-end gap-2 sm:gap-4">
+        {/* Theme */}
         <button
           onClick={toggleTheme}
           className="rounded-lg border border-gray-300 bg-gray-100 px-3 py-2 text-sm font-medium transition hover:bg-gray-200 dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700"
@@ -61,10 +73,10 @@ function Navbar() {
         {/* Logout */}
         <button
           onClick={handleLogout}
-          className="flex items-center gap-2 rounded-lg bg-red-500 px-4 py-2 text-white transition hover:bg-red-600"
+          className="flex items-center gap-2 rounded-lg bg-red-500 px-3 py-2 text-sm text-white transition hover:bg-red-600 sm:px-4"
         >
           <FaSignOutAlt />
-          Logout
+          <span className="hidden sm:inline">Logout</span>
         </button>
       </div>
     </header>

@@ -48,7 +48,7 @@ function AllJobs() {
 
   return (
     <div className="transition-colors duration-300">
-      <div className="mb-8 flex items-center justify-between">
+      <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <h1 className="text-3xl font-bold text-slate-900 dark:text-white">
           All Jobs
         </h1>

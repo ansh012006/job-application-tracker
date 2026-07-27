@@ -7,7 +7,7 @@ function JobCard({ job, onDelete }) {
 
   return (
     <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-slate-700 dark:bg-slate-800">
-      <div className="flex items-start justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h2 className="text-xl font-bold text-slate-900 dark:text-white">
             {job.company}
@@ -37,7 +37,7 @@ function JobCard({ job, onDelete }) {
         {new Date(job.appliedDate).toLocaleDateString()}
       </div>
 
-      <div className="mt-6 flex justify-end gap-3">
+      <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-end">
         <button
           onClick={() => navigate(`/dashboard/jobs/edit/${job._id}`)}
           className="rounded-lg bg-blue-600 px-4 py-2 text-white transition-all duration-200 hover:bg-blue-700 hover:shadow-lg"
