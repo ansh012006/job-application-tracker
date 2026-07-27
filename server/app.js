@@ -9,11 +9,10 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "http://localhost:5173", // Local development
-      "job-application-tracker-eta-seven.vercel.app", // Replace with your Vercel URL
+      "http://localhost:5173",
+      "https://job-application-tracker-eta-seven.vercel.app",
     ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
   })
 );
 
